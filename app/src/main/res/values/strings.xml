@@ -1,0 +1,135 @@
+<resources>
+    <string name="app_name">Tuq</string>
+    <string name="author">Joshua Ogunyinka</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="wip">It\'s still a work-in-progress</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_help">Help</string>
+    <string name="name_of_user">Welcome, %1$s</string>
+    <string name="add_repo">Repository</string>
+    <string name="add_repo_explained">
+        To view subjects, add a valid Repository URL using the + button at the
+        bottom of the screen or click on one of your saved links in <b>Saved Links</b>.
+    </string>
+    <string name="error_grabbing_url"> There was an error when getting data from the address supplied,
+        could be the network, invalid address, or wrong validation.
+    </string>
+    <string name="invalid_url"> Invalid URL specified </string>
+    <string name="personal">Personal items</string>
+    <string name="result">My results</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="submission_error">Submissions(Error)</string>
+    <string name="instructions">Instructions</string>
+    <string name="instructor">Instructor</string>
+    <string name="departments">Departments taking this course</string>
+    <string name="available_subjects"> Available subjects</string>
+    <string name="add_repo_hint">Enter a valid repository URL</string>
+    <string name="index_activity_loading">Loading&#8230;</string>
+    <string name="try_loading_url">Trying to confirm repository&#8230;</string>
+    <string name="try_loading_questions">Trying to load questions&#8230;</string>
+    <string name="analyze_question">Analyzing subjects&#8230;</string>
+    <string name="question_index"> Question %1$d of %2$d</string>
+    <string name="submit_text">Submit</string>
+    <string name="forfeit_text">Forfeit</string>
+    <string name="submit_prompt">Are you sure you want to exit without submitting?</string>
+
+    <string name="answered_questions">Answered %1$d of %2$d</string>
+    <string name="begin">Start paper</string>
+    <string name="exam_instructions">%1$s</string>
+    <string name="matric_input_hint">Enter your matriculation number</string>
+    <string name="password_input_hint">Enter login password</string>
+    <string name="good_luck">Good luck with your results.</string>
+    <string name="logging_in"> Logging you in&#8230;</string>
+    <string name="submitting_text">Please wait for a few seconds&#8230;making submission</string>
+    <string name="saved_repos">Saved Links</string>
+    <string name="remove">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="empty_cached_repository">There are currently no saved repositories.</string>
+    <string name="premium">Premium features</string>
+    <string name="edit_repo_name">Alias for the repository</string>
+    <string name="edit_repo_url">Enter valid repository address</string>
+    <string name="loading">Please wait</string>
+    <string name="logo">logo</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="create_account">No account yet? Create one</string>
+    <string name="score">%1$d of %2$d</string>
+    <string name="problem_fetching_data">"Unable to fetch data"</string>
+    <string name="appreciation">Appreciation</string>
+    <string name="appr_to_all">Appreciation goes to everybody.</string>
+    <string name="appr_text">
+        In no particular order, special thanks to the following for their effort in:\n\n
+        <b>THE DEVELOPMENT</b>\n
+        <b>Sourcey</b> &#8212; the designer of the wonderful login/signup screen used.\n
+        <b>Jake Wharton</b> &#8212; the designer of ButterKnife.\n
+        <b>Gravity(the language)</b> &#8212; the source of inspiration for the logo.\n
+        <b>Ayman and Junaid Syed</b> &#8212; the logo re-designers.\n\n
+        <b>MY PERSONAL LIFE</b>\n
+        Me &#8212; the designer of Tuq.\n
+        Her &#8212; for keeping me sane.\n
+        Them &#8212; wonderful family for being wonderful.\n
+        Everybody &#8212; for being there.\n\n
+        Send me complains/ideas through <b><i><u>ogunyinkajoshua@yahoo.com</u></i></b>
+    </string>
+    <string name="help_text">
+        <b>What is Tuq?</b>\n\n
+        <i>A quote from my favorite TV Series: What the H is a Stiles?</i>\n
+        Tuq is an acronym for The Universal Quiz App(without the A, of course).
+        It is a Q&amp;A platform for quiz lovers, universities/colleges or high schools,
+        employers, and the general public. Right now, it is restricted to multiple choice
+        questions that requires no explicit input texts.\n\n
+
+        <b>How does it work?\n\n</b>
+        This app is dependent on data sent to and from a server. On its own, it doesn\'t do
+        much( truth be told, it is useless on its own ); however, there is a Desktop/PC software for
+        Q&amp;A administrators that are used to upload questions to a server. There is a concept called
+        <i><b>repository</b></i>, in Tuq\'s context, it is basically like a folder/directory containing
+        series of files. When questions are uploaded on to the server, it generates a unique web link,
+        this unique link points to <i>at most one</i> repository. This link is what your administrator
+        will give out to you. Each link contains detailed information on every question that is within
+        its repository. \n\n
+
+        <b>In a nutshell</b>\n\n
+        All you need is to get a repository link from your administrator, your friends and/or an employer,
+        then click on the + button on the <b>Repository</b> page, enter the link and wait for Tuq to do
+        its magic. Each valid links are saved under the <b>Saved Links</b> page for use in the future.\n\n
+
+        <b>What next?</b>\n\n
+        When Tuq has worked out its magic on a repository link or when you click one of your
+        <i>Saved links</i>, you\'re presented with a list of question/courses. Clicking on any of the
+        courses presents you with instructions from your administrator; if you decide to
+        <i>start quiz</i>, then you\'re presented with time-based questions, you can <b>slide</b>
+        both ways like navigating through your picture gallery in order to view your previous and next
+        questions. When you\'re done, click on the <b>Submit</b> or <b>Forfeit</b> buttons on the top of
+        the page to complete your quiz.\n\n
+
+        <b>Saved Links</b>\n\n
+        This page lists all the (successful) repository links you have used. By holding for a couple
+        seconds, you can delete or edit a repository name/link. You can also click on any in order to
+        view all the questions available under it.\n\n
+        <b>My Results</b>\n\n
+        This page grabs and display information on your previous quizzes and your scores. Grading usually
+        take around 30seconds to 5minutes before they are readily available.\n\n
+
+        <b>Submissions(Error)</b>\n\n
+        Sometimes, submitting a quiz for grading may fail, most likely due to 2 reasons:\n
+        1. You have already taken that quiz. \n
+        2. Network or server problem.\n
+        In order not to lose your precious data and let you down, this page list all the quizzes that
+        have been taken but failed to be submitted. You can then manually <b>resend </b>your "scripts"
+        for grading.\n\n
+    </string>
+    <string name="send_confirmation">Registered? Resend confirmation</string>
+    <string name="send_to_me">Send It</string>
+    <string name="resend">Resend</string>
+    <string name="unknown_subject">Name unknown</string>
+    <string name="unknown_date">Date Unknown</string>
+    <string name="mobile_number_opt">Mobile Number(Optional)</string>
+    <string name="most_ranked">Most ranked courses</string>
+    <string name="nyi">"Not yet implemented, available on next update"</string>
+    <string name="password">Password</string>
+</resources>

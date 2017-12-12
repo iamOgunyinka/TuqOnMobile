@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single" android:id="@+id/grp_1">
+        <item
+            android:id="@+id/nav_cached_repo"
+            android:icon="@android:drawable/btn_star_big_on"
+            android:title="@string/saved_repos" />
+        <item
+            android:id="@+id/nav_add_repo"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="@string/add_repo" />
+        <item
+            android:id="@+id/nav_result"
+            android:icon="@android:drawable/ic_menu_share"
+            android:title="@string/result" />
+        <item
+            android:id="@+id/nav_submission_error"
+            android:icon="@drawable/ic_menu_send"
+            android:title="@string/submission_error" />
+        <item android:id="@+id/nav_ranked_courses"
+            android:icon="@android:drawable/stat_sys_upload_done"
+            android:title="@string/most_ranked" />
+    </group>
+    <group android:checkableBehavior="single" android:id="@+id/grp_2">
+        <item android:checkable="false" android:title="@string/action_help"
+            android:id="@+id/nav_help"
+            android:icon="@android:drawable/ic_menu_help"/>
+        <item android:checkable="false" android:title="@string/appreciation"
+            android:id="@+id/nav_appreciation"
+            android:icon="@android:drawable/ic_lock_silent_mode_off"/>
+    </group>
+</menu>

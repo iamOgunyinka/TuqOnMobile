@@ -1,3 +1,8 @@
+# Optional Files
+app/src/main/java/com/froist_inc/josh/mbtproto/Util*.java
+app/src/main/java/com/froist_inc/josh/mbtproto/Log*.java
+
+
 # Built application files
 *.apk
 *.ap_
