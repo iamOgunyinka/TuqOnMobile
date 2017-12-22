@@ -1,13 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_centerInParent="true"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_marginTop="20dp"
-        android:textSize="30sp"
-        android:text="@string/nyi"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/ranking_empty_view"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                android:text="@string/no_ranking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:contentDescription="@string/add_repo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo_large" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <ListView
+            android:id="@+id/list_view_left"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:paddingRight="5dp"
+            android:scrollbars="none" >
+        </ListView>
+        <ListView
+            android:id="@+id/list_view_right"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:scrollbars="none" >
+        </ListView>
+    </LinearLayout>
+    
+    <TableLayout
+        android:id="@+id/ranking_loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:background="@android:color/white"
+        android:clickable="true">
+        <TextView
+            android:id="@+id/ranking_status_report_text"
+            android:text="@string/index_activity_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_horizontal"
+            style="@android:style/TextAppearance.Large" />
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@android:style/Widget.ProgressBar.Large" />
+    </TableLayout>
+</FrameLayout>

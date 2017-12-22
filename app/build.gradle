@@ -9,8 +9,8 @@ android {
         applicationId "com.froist_inc.josh.mbtproto"
         minSdkVersion 11
         targetSdkVersion 23
-        versionName '1.0.4'
-        versionCode 5
+        versionName '1.0.5'
+        versionCode 6
     }
     buildTypes {
         release {

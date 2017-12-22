@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-class CHandlerThread extends android.os.HandlerThread
+class CHandlerThread<Type extends Utilities.BasicData> extends android.os.HandlerThread
 {
     private Handler m_default_handler;
     private final Handler m_main_ui_handler;
@@ -19,15 +19,13 @@ class CHandlerThread extends android.os.HandlerThread
 
     public interface Listener
     {
-        void OnSubjectCodeDataObtained( SubjectInformation subject_information );
         void OnAllTasksCompleted();
     }
 
     private static final String TAG = "HandlerThread";
     private static final int DATA_INITIALIZE = 0;
 
-    private final Map<SubjectInformation, String> m_data =
-            Collections.synchronizedMap( new HashMap<SubjectInformation, String>() );
+    private final Map<Type, String> m_data = Collections.synchronizedMap( new HashMap<Type, String>() );
 
     public CHandlerThread( Context context, Handler main_ui_handler )
     {
@@ -49,20 +47,19 @@ class CHandlerThread extends android.os.HandlerThread
             {
                 if( msg.what == CHandlerThread.DATA_INITIALIZE ){
                     @SuppressWarnings( "unchecked" )
-                    SubjectInformation info = ( SubjectInformation ) msg.obj;
+                    Type info = ( Type ) msg.obj;
                     HandleMessage( info );
                 }
             }
         };
     }
 
-    private void HandleMessage( final SubjectInformation subject )
+    private void HandleMessage( final Type subject )
     {
         try {
-            byte [] data = GrabData( subject.GetSubjectDataUrl() );
-            JsonParser json_parser = new JsonParser();
-            subject.SetQuestionData ( json_parser.ParseObject( data ) );
-            subject.icon_data = GrabData( subject.GetSubjectIconUrl() );
+            byte [] data = GrabData( subject.course_data_url );
+            subject.SetQuestionData ( new JsonParser().ParseObject( data ) );
+            subject.SetIconData( GrabData( subject.GetIconUrl() ) );
             /* In case the handler itself or the looper associated with the handler is destroyed, don't do anything. */
             if( m_default_handler == null || m_default_handler.getLooper() == null ){
                 return;
@@ -71,7 +68,6 @@ class CHandlerThread extends android.os.HandlerThread
                 @Override
                 public void run() {
                     m_data.remove( subject );
-                    //m_listener.OnSubjectCodeDataObtained( subject );
                     if( m_data.size() == 0 && m_listener != null ){
                         m_listener.OnAllTasksCompleted();
                     }
@@ -87,20 +83,17 @@ class CHandlerThread extends android.os.HandlerThread
         }
     }
 
-    public void Prepare( final SubjectInformation subject_information )
+    public void Prepare( final Type data )
     {
         if( m_default_handler.getLooper() != null ) {
-            m_data.put( subject_information, subject_information.GetSubjectName() );
-            m_default_handler.obtainMessage( CHandlerThread.DATA_INITIALIZE, subject_information ).sendToTarget();
+            m_data.put( data, data.course_data_url );
+            m_default_handler.obtainMessage( CHandlerThread.DATA_INITIALIZE, data ).sendToTarget();
         }
     }
 
     private byte[] GrabData( final String url ) throws IOException
     {
-        if( url != null ){
-            return NetworkManager.GetNetwork().GetData( url );
-        }
-        return null;
+        return url == null ? null : NetworkManager.GetNetwork().GetData( url );
     }
 
     @Override

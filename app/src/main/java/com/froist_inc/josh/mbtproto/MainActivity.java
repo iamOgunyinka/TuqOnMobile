@@ -166,8 +166,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     throw new IOException( result.getString( "detail" ) );
                 }
                 JSONObject endpoints = result.getJSONObject( "detail" );
+                
                 Utilities.Endpoints.result_url = endpoints.getString( "result" );
                 Utilities.Endpoints.ranking_url = endpoints.getString( "ranking" );
+                Utilities.Endpoints.course_info_url = endpoints.getString( "course_info" );
+                
                 return Utilities.Success; // just return something that isn't null
             } catch( JSONException | IOException except ){
                 error_message = except.getLocalizedMessage();

@@ -20,7 +20,26 @@ public class SubjectsLaboratory
 {
     private static SubjectsLaboratory subjects_lab_instance;
     private static ArrayList<Pair<String, String>> cached_repositories;
+    private static ArrayList<Utilities.RankedCoursesData> ranked_courses;
     private ArrayList<SubjectInformation> items;
+
+    public static ArrayList<Utilities.RankedCoursesData> GetRankedCourses()
+    {
+        if( ranked_courses == null ){
+            ranked_courses = new ArrayList<>();
+        }
+        return ranked_courses;
+    }
+
+    public static void SetRankedCourses( final ArrayList<Utilities.RankedCoursesData> ranked_courses )
+    {
+        SubjectsLaboratory.ranked_courses = ranked_courses;
+    }
+
+    public static Utilities.RankedCoursesData GetRankedCourseAtIndex( final int index )
+    {
+        return SubjectsLaboratory.ranked_courses.get( index );
+    }
 
     public static SubjectsLaboratory Get( Context context )
     {

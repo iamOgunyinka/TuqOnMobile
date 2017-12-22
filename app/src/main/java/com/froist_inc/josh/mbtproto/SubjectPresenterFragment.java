@@ -38,9 +38,9 @@ public class SubjectPresenterFragment extends Fragment
     private View          m_loading_view;
     private GridView      m_grid_view;
     private TextView      m_status_text_view;
-    private CHandlerThread m_handler_thread = null;
     private String        current_address;
     private FloatingActionButton fab;
+    private CHandlerThread<SubjectInformation> m_handler_thread = null;
 
     private static final int     ADD_REPO_REQUEST_CODE = 1;
     private static final String  TAG = "SubjectPresenter";
@@ -216,7 +216,8 @@ public class SubjectPresenterFragment extends Fragment
 
     private void UpdateMainThreadInformation()
     {
-        if( SubjectsLaboratory.Get( getActivity() ).GetSubjects().size() == 0 ) {
+        final ArrayList<SubjectInformation> subject_info = SubjectsLaboratory.Get(getActivity()).GetSubjects();
+        if( subject_info.size() == 0 ) {
             AlertDialog alert = new AlertDialog.Builder( SubjectPresenterFragment.this.getContext() )
                     .setTitle( android.R.string.dialog_alert_title )
                     .setMessage( "No paper(s) was found matching the criteria or found slated for the day." )
@@ -225,8 +226,8 @@ public class SubjectPresenterFragment extends Fragment
             m_grid_view.setAdapter( new SubjectAdapter( new ArrayList<SubjectInformation>() ) );
         } else {
             if( m_handler_thread != null ){
-                for ( int i = 0; i < SubjectsLaboratory.Get( getActivity() ).GetSubjects().size(); ++i ) {
-                    m_handler_thread.Prepare( SubjectsLaboratory.Get( getActivity() ).GetSubjectItem( i ));
+                for (int i = 0; i < subject_info.size(); ++i ) {
+                    m_handler_thread.Prepare( subject_info.get( i ));
                 }
             }
         }
@@ -338,8 +339,11 @@ public class SubjectPresenterFragment extends Fragment
                                 info.SetDepartments( departments );
                                 info.SetDurationInMinutes( question_object.getInt( "duration" ) );
                                 info.SetInstructor( question_object.getString( "instructor" ) );
-                                if( question_object.has( "icon_url" ) ){
-                                    info.SetIconAddress( question_object.getString( "icon_url" ) );
+                                if( question_object.has( "icon" ) ){
+                                    final String icon_url = question_object.optString( "icon" );
+                                    if( !icon_url.isEmpty() ){
+                                        info.SetIconAddress( icon_url );
+                                    }
                                 }
                                 question_info_list.add( info );
                             } catch ( JSONException exception ) {
@@ -375,14 +379,9 @@ public class SubjectPresenterFragment extends Fragment
     private void InitializeHandler()
     {
         if( m_handler_thread == null ){
-            m_handler_thread = new CHandlerThread( getActivity(), new Handler() );
+            m_handler_thread = new CHandlerThread<>( getActivity(), new Handler() );
         }
         m_handler_thread.setListener( new CHandlerThread.Listener() {
-            @Override
-            public void OnSubjectCodeDataObtained( SubjectInformation subjectInformation )
-            {
-            }
-
             @Override
             public void OnAllTasksCompleted()
             {
@@ -390,7 +389,8 @@ public class SubjectPresenterFragment extends Fragment
                     main_ui_handler.post( new Runnable(){
                         @Override
                         public void run() {
-                            m_grid_view.setAdapter( new SubjectAdapter( SubjectsLaboratory.Get( getActivity() ).GetSubjects() ));
+                            m_grid_view.setAdapter( new SubjectAdapter( SubjectsLaboratory.Get( getActivity() )
+                                    .GetSubjects() ));
                             m_loading_view.setVisibility( View.INVISIBLE );
                         }
                     });
